@@ -1,9 +1,6 @@
 """NodeRPC against the exact mock fixtures used by the Odoo bitcoin_explorer
 tests (the code that used tinyrpc), so the replacement handles the same
 Bitcoin Core response and error shapes.
-
-Fixtures adapted from
-``/home/elmeri/Odoo/src/19/tabularium/bitcoin_explorer/tests/test_bitcoin_explorer.py``.
 """
 
 import json

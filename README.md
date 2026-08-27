@@ -62,18 +62,7 @@ Coverage:
 
 - Encode/decode round-trips and malformed-input rejection.
 - BIP32/44/49/84/86 derivation against the official test vectors.
-- Mock-server tests for `NodeRPC` and `ChainQuery`, reusing the exact
-  Bitcoin Core / ElectrumX fixtures from the Odoo tests of the replaced code.
-- **Frozen upstream vectors** (`tests/vectors/`): `generated.json` is derived by
-  `tests/vectors/generate.py` using `btclib` (derivation, addresses,
-  fingerprints) and the vendored Electrum (scripthashes) as oracles, plus the
-  canonical Bitcoin Core `bip341_wallet_vectors.json`. The tests assert bitwalkit
-  against these files with **no runtime dependency** on btclib or Electrum.
 
 Regenerate the frozen vectors (only when intentionally re-deriving them) in an
 environment that has the originals installed:
 
-```bash
-PYTHONPATH=/path/to/tabularium/bitcoin_treasury \
-    /path/to/odoo-venv/bin/python tests/vectors/generate.py
-```

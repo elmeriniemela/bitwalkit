@@ -4,9 +4,6 @@ An ``Account`` wraps a single account-level extended public key (e.g. a ``zpub``
 at ``m/84'/0'/0'``) and hands out receive/change addresses at the standard
 ``/{change}/{index}`` suffix. ``MultisigAccount`` does the same for an
 ``m``-of-``n`` cosigner set, BIP67-sorting the derived keys.
-
-This replaces the ``btclib`` derive + ``ScriptPubKey`` usage in the Odoo
-``bitcoin_treasury`` wallet.
 """
 
 from __future__ import annotations
