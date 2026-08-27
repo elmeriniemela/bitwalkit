@@ -1,0 +1,6 @@
+{
+  "include": ["src", "tests"],
+  "extraPaths": ["src", "vendor/secp256k1lab/src"],
+  "pythonVersion": "3.12",
+  "reportMissingImports": "warning"
+}

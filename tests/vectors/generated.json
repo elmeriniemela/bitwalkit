@@ -1,0 +1,427 @@
+{
+  "_source": "btclib + vendored Electrum (see generate.py)",
+  "root_xprv": "xprv9s21ZrQH143K3QTDL4LXw2F7HEK3wJUD2nW2nRk4stbPy6cq3jPPqjiChkVvvNKmPGJxWUtg6LnF5kejMRNNU3TGtRBeJgk33yuGBxrMPHi",
+  "bip32_chain": [
+    {
+      "path": "0'",
+      "xprv": "xprv9uHRZZhk6KAJC1avXpDAp4MDc3sQKNxDiPvvkX8Br5ngLNv1TxvUxt4cV1rGL5hj6KCesnDYUhd7oWgT11eZG7XnxHrnYeSvkzY7d2bhkJ7",
+      "fingerprint": "5c1bd648"
+    },
+    {
+      "path": "0'/1",
+      "xprv": "xprv9wTYmMFdV23N2TdNG573QoEsfRrWKQgWeibmLntzniatZvR9BmLnvSxqu53Kw1UmYPxLgboyZQaXwTCg8MSY3H2EU4pWcQDnRnrVA1xe8fs",
+      "fingerprint": "bef5a2f9"
+    },
+    {
+      "path": "0'/1/2'",
+      "xprv": "xprv9z4pot5VBttmtdRTWfWQmoH1taj2axGVzFqSb8C9xaxKymcFzXBDptWmT7FwuEzG3ryjH4ktypQSAewRiNMjANTtpgP4mLTj34bhnZX7UiM",
+      "fingerprint": "ee7ab90c"
+    },
+    {
+      "path": "0'/1/2'/2",
+      "xprv": "xprvA2JDeKCSNNZky6uBCviVfJSKyQ1mDYahRjijr5idH2WwLsEd4Hsb2Tyh8RfQMuPh7f7RtyzTtdrbdqqsunu5Mm3wDvUAKRHSC34sJ7in334",
+      "fingerprint": "d880d7d8"
+    },
+    {
+      "path": "0'/1/2'/2/1000000000",
+      "xprv": "xprvA41z7zogVVwxVSgdKUHDy1SKmdb533PjDz7J6N6mV6uS3ze1ai8FHa8kmHScGpWmj4WggLyQjgPie1rFSruoUihUZREPSL39UNdE3BBDu76",
+      "fingerprint": "d69aa102"
+    }
+  ],
+  "accounts": [
+    {
+      "purpose": 44,
+      "script_type": "p2pkh",
+      "account_path": "44'/0'/0'",
+      "account_xpub": "xpub6CDEarkRoiwWPj3n3gYygGwgoGchxYg3g6Zs5L2nB4B6wdojzcWCKKHMu9XuY1GyYygRfrVembjAko1T5xTsxj7ecKXxEPzDxx7nCK8Dxtx",
+      "addresses": [
+        {
+          "change": 0,
+          "index": 0,
+          "address": "1NQpH6Nf8QtR2HphLRcvuVqfhXBXsiWn8r"
+        },
+        {
+          "change": 0,
+          "index": 1,
+          "address": "16qTdEma9YHFPCZ8sB51nNrbfVg8Nkzy6P"
+        },
+        {
+          "change": 0,
+          "index": 2,
+          "address": "1JbFSv4FnJ6ykAmAAMSsfb17xPDRxa3mcd"
+        },
+        {
+          "change": 0,
+          "index": 5,
+          "address": "1BAe3RWgFyYSYinqMgcYeSn6KhMQiVcq5J"
+        },
+        {
+          "change": 0,
+          "index": 100,
+          "address": "16Hz19dJKkWK8CXfV6sALMEHXe9xe7EPFd"
+        },
+        {
+          "change": 1,
+          "index": 0,
+          "address": "1EKtZ7DbxaSB7HB4JtZhmfoc9W8kvd2AtE"
+        },
+        {
+          "change": 1,
+          "index": 1,
+          "address": "15ZM3K6c8vD5DKTq1y3ErdizU4WLZgqhpU"
+        },
+        {
+          "change": 1,
+          "index": 2,
+          "address": "1Q7VxCWeTiHJk9sNz5cPUqkb8G84WGLb8S"
+        },
+        {
+          "change": 1,
+          "index": 5,
+          "address": "1L1TTfY37eMMC8YTx7YBqSHT8qC2Yymt6Q"
+        },
+        {
+          "change": 1,
+          "index": 100,
+          "address": "1Dqzk3PKhofpKcRbWkMjkfBxixk2FsVXcN"
+        }
+      ]
+    },
+    {
+      "purpose": 49,
+      "script_type": "p2sh-p2wpkh",
+      "account_path": "49'/0'/0'",
+      "account_xpub": "xpub6CGm4atcpu4jeT1T4htkkgct5LcPdheajmdxDpKuimWvBfL2f2o34kc2N3znM1YrVjkJoMBbdVBwuq6fYhNWD3kjEdPGJaS8gqBe3C5tQPm",
+      "addresses": [
+        {
+          "change": 0,
+          "index": 0,
+          "address": "35KsULTNUcaFcJC3aKBnP38ZZW2Yu36khW"
+        },
+        {
+          "change": 0,
+          "index": 1,
+          "address": "3MDnMGnMrucHGt1E4UXu5uj5qJYvpbTrsP"
+        },
+        {
+          "change": 0,
+          "index": 2,
+          "address": "3A62D4foTnhpFycKAeLi5PE76cyfzaTJoS"
+        },
+        {
+          "change": 0,
+          "index": 5,
+          "address": "3Ag4sdGCiEUftqFeM7YMcAoCxvHLKwG5P8"
+        },
+        {
+          "change": 0,
+          "index": 100,
+          "address": "33bwtycPUEBF4vqDESFcoKQkJV96LT1fVT"
+        },
+        {
+          "change": 1,
+          "index": 0,
+          "address": "3BZR1nYmezAeBX4cjLiuDaSAMvRDE8fBG2"
+        },
+        {
+          "change": 1,
+          "index": 1,
+          "address": "388HwagQQD633guzcq2mTtPhP4RyCN1Db5"
+        },
+        {
+          "change": 1,
+          "index": 2,
+          "address": "3MftJ9RgbozW5TjUV1RcYYzvcYHEJT7kRW"
+        },
+        {
+          "change": 1,
+          "index": 5,
+          "address": "3FASvAu9z9cDjAiF487rzutY4cUiSbfboz"
+        },
+        {
+          "change": 1,
+          "index": 100,
+          "address": "39hW3xEY4DNzCB4rgieLp9v42uv9cJ1TLH"
+        }
+      ]
+    },
+    {
+      "purpose": 84,
+      "script_type": "p2wpkh",
+      "account_path": "84'/0'/0'",
+      "account_xpub": "xpub6C1HVMz946r433QEjZGpYYWYcspxXXBPys5PBGkmQboRXE6RLfFiStEkKbWKCZaPgDrzZh9nUEunxuiuy6MNdw23du2Ek7GoKYMJVH8eK5E",
+      "addresses": [
+        {
+          "change": 0,
+          "index": 0,
+          "address": "bc1qpux3z758ulsxg69eptaakukraanqwtdxe5yy4c"
+        },
+        {
+          "change": 0,
+          "index": 1,
+          "address": "bc1qytr8s7skf86x7ccl6wctal9hqrartu085r9mr5"
+        },
+        {
+          "change": 0,
+          "index": 2,
+          "address": "bc1qh6uplta545yzxe56ku3eehzhs6l5j25vvy2u4w"
+        },
+        {
+          "change": 0,
+          "index": 5,
+          "address": "bc1qxhvckq94yfex3wufzxhxjpvpc8z3hrpst5xl98"
+        },
+        {
+          "change": 0,
+          "index": 100,
+          "address": "bc1qmwtqp8vs76tcr89rgny0dfpcl256zkw0j4mu00"
+        },
+        {
+          "change": 1,
+          "index": 0,
+          "address": "bc1qcr25el7jpevd40duq22znc4hg3p5vs0y965ay8"
+        },
+        {
+          "change": 1,
+          "index": 1,
+          "address": "bc1qstsv22jacyptlgle5rv7ew9ymht8v5a5fqt8ta"
+        },
+        {
+          "change": 1,
+          "index": 2,
+          "address": "bc1q09rrzkl592wymlkwrcyrq3ar50aps0y7w8mvp2"
+        },
+        {
+          "change": 1,
+          "index": 5,
+          "address": "bc1qjmn7pjr954txs2q25l8wf2pzh5v89unrd3elyr"
+        },
+        {
+          "change": 1,
+          "index": 100,
+          "address": "bc1qmkpvl0e5v06p6je8a6x9yyvkxuchackdjxzt4m"
+        }
+      ]
+    },
+    {
+      "purpose": 86,
+      "script_type": "p2tr",
+      "account_path": "86'/0'/0'",
+      "account_xpub": "xpub6DRX1xNPHKaApgDnqaMNxJ8Lz35KCn3mRcW3LUep3JKhxWisRwaZJPn4BuZiaJ4kJ3cdqwbn4vZcsGiLGJJabZbqa65LGX2uhU9CtPWSgEn",
+      "addresses": [
+        {
+          "change": 0,
+          "index": 0,
+          "address": "bc1pqqeyhah6g75dwr942xv40h255q4nshqw4k8ylyhe7plej2eg3mnqz9w4np"
+        },
+        {
+          "change": 0,
+          "index": 1,
+          "address": "bc1pgaggl4768lnlktgdky4nxm52zyqwpx52wzhkreew9qalxqmerdnqj6nuxn"
+        },
+        {
+          "change": 0,
+          "index": 2,
+          "address": "bc1pfap3jc9ccm0g5qghk7t76qz7uam3c56ljz9fhkfh6qjmkq8duawq6c909g"
+        },
+        {
+          "change": 0,
+          "index": 5,
+          "address": "bc1p8t3n6utpa8ckksc54fjvl3nyk0e69jzjcmqfl6kpj9svhwfg438qhj37rp"
+        },
+        {
+          "change": 0,
+          "index": 100,
+          "address": "bc1p7tmy7xr3nvrkaurumnyy43eql3226nsq7zm9tckvdvgq7ejwx2xq8tf2ll"
+        },
+        {
+          "change": 1,
+          "index": 0,
+          "address": "bc1pze68k8k30zu29nzzllmhvet26avtxyfec5n88ymwzmd59mxw0wpqlt3mwu"
+        },
+        {
+          "change": 1,
+          "index": 1,
+          "address": "bc1pdnc6g8pzeved83aj5dv74ly4kqdndrucectre3dry453y60f3vzqk3lr95"
+        },
+        {
+          "change": 1,
+          "index": 2,
+          "address": "bc1pajccq589lg5ap2478dqynydy6kn5n2j69vss55dz4nlc6fvxwqes83vpyr"
+        },
+        {
+          "change": 1,
+          "index": 5,
+          "address": "bc1pjt4c29a85e3yhczpyhz36dutdmy6uuy2sv8q07jx5gz4fdwsyfzsmjc2sp"
+        },
+        {
+          "change": 1,
+          "index": 100,
+          "address": "bc1p5qq2edjqcagynpyfakz5gjwvjl5p8hcuq4c0fufc23r2pxmm9uyske4znc"
+        }
+      ]
+    }
+  ],
+  "scripthashes": [
+    {
+      "address": "1NQpH6Nf8QtR2HphLRcvuVqfhXBXsiWn8r",
+      "scripthash": "d06c047d10ea2411fadef6224244d44b02620c3c4b2033ffaa31d6b2641710a4"
+    },
+    {
+      "address": "16qTdEma9YHFPCZ8sB51nNrbfVg8Nkzy6P",
+      "scripthash": "607a8a5741437239c14ef0d94e5ab81dc8e29f9e5171bc418d9e3fba42db1e53"
+    },
+    {
+      "address": "1JbFSv4FnJ6ykAmAAMSsfb17xPDRxa3mcd",
+      "scripthash": "021ed1b2e5f012023135978e673e4688840089556dda6b307530d4254c03aaf0"
+    },
+    {
+      "address": "1BAe3RWgFyYSYinqMgcYeSn6KhMQiVcq5J",
+      "scripthash": "c8fd56e975a870c6c4a073b81573cc894175aa5b462631aeb3022c45d98dfee0"
+    },
+    {
+      "address": "16Hz19dJKkWK8CXfV6sALMEHXe9xe7EPFd",
+      "scripthash": "d68253838c5b058f518c21e7237e647e56390b653070e52c22a694cd84866b9d"
+    },
+    {
+      "address": "1EKtZ7DbxaSB7HB4JtZhmfoc9W8kvd2AtE",
+      "scripthash": "70df31ca733733d53381daf8b30134999c5ebc818153049dff44d3dfa592baa0"
+    },
+    {
+      "address": "15ZM3K6c8vD5DKTq1y3ErdizU4WLZgqhpU",
+      "scripthash": "d99782dd1f78d9e6a48b9e760a16f27d6ea16e2275423678a9d22051deae14c7"
+    },
+    {
+      "address": "1Q7VxCWeTiHJk9sNz5cPUqkb8G84WGLb8S",
+      "scripthash": "e5e559b109e5190859e241add36117d4e4eb2ce96065f43f43d861e8fa8baab4"
+    },
+    {
+      "address": "1L1TTfY37eMMC8YTx7YBqSHT8qC2Yymt6Q",
+      "scripthash": "2f882ecd9581e81a1b9bf8e4a17983ef98a047e8f4ebabf99fc4a7f6ce3ccf97"
+    },
+    {
+      "address": "1Dqzk3PKhofpKcRbWkMjkfBxixk2FsVXcN",
+      "scripthash": "93784080228ad5d63f6888628a9ed63601be4289187c558a458673467089c77c"
+    },
+    {
+      "address": "35KsULTNUcaFcJC3aKBnP38ZZW2Yu36khW",
+      "scripthash": "6b703dc54022f6c71c4d394c77f28ec5dba02e6c655379b1d9166757ae4a852f"
+    },
+    {
+      "address": "3MDnMGnMrucHGt1E4UXu5uj5qJYvpbTrsP",
+      "scripthash": "754c738d0f0be13bf147f30a31e4a93522056cc7b84f08f049665d8e7d33d53a"
+    },
+    {
+      "address": "3A62D4foTnhpFycKAeLi5PE76cyfzaTJoS",
+      "scripthash": "fc260e78998140c5fe5c569b0a41cc0487686895b723409ed83b6917064c0955"
+    },
+    {
+      "address": "3Ag4sdGCiEUftqFeM7YMcAoCxvHLKwG5P8",
+      "scripthash": "4446816f2d6e29360c722f0258c61c22279bbc74031026699d8df678f221ee16"
+    },
+    {
+      "address": "33bwtycPUEBF4vqDESFcoKQkJV96LT1fVT",
+      "scripthash": "329129e442bf5b14913f1e24cfd01cfeb97e2de0661c18a642b7e08279e0bfcf"
+    },
+    {
+      "address": "3BZR1nYmezAeBX4cjLiuDaSAMvRDE8fBG2",
+      "scripthash": "5ba692d83d0c77b98cd42a76010ccd9414442527af5e4d954e16b2f5c7618da5"
+    },
+    {
+      "address": "388HwagQQD633guzcq2mTtPhP4RyCN1Db5",
+      "scripthash": "a61fa8c25101175d83cd9e12fcfecf102bef372d649ffb075210eed85067cfd4"
+    },
+    {
+      "address": "3MftJ9RgbozW5TjUV1RcYYzvcYHEJT7kRW",
+      "scripthash": "f6f22d526c8a6d88e14711ec25c932375b0d0f41a9c3f1a125f26257e3ff0e0a"
+    },
+    {
+      "address": "3FASvAu9z9cDjAiF487rzutY4cUiSbfboz",
+      "scripthash": "2e14a6675cbf1e5d2fe236518c9e6ede4500f8334a260f669eebcc7556ebfff5"
+    },
+    {
+      "address": "39hW3xEY4DNzCB4rgieLp9v42uv9cJ1TLH",
+      "scripthash": "749f10e7c3a82423587269d3e0262ad547e2629a239a4fc7e12628572cd3054e"
+    },
+    {
+      "address": "bc1qpux3z758ulsxg69eptaakukraanqwtdxe5yy4c",
+      "scripthash": "fdb4ca5a6cbb48051687edb2a7cbb5908a9ab8382d5a81b4da3e23c35d845df2"
+    },
+    {
+      "address": "bc1qytr8s7skf86x7ccl6wctal9hqrartu085r9mr5",
+      "scripthash": "93cec162e3de4c8949723841c6f53f01ac985c803363c8d888eec2dab1425807"
+    },
+    {
+      "address": "bc1qh6uplta545yzxe56ku3eehzhs6l5j25vvy2u4w",
+      "scripthash": "29b19d95b4e6b5d0a64ed3e4304c0f1a220d6511d0e8c5b30b435d6d4888eab9"
+    },
+    {
+      "address": "bc1qxhvckq94yfex3wufzxhxjpvpc8z3hrpst5xl98",
+      "scripthash": "10faa3fc63fd5453e71ffa688e7db68e3787c5073f39fb3d4a2ca5f421f5bc99"
+    },
+    {
+      "address": "bc1qmwtqp8vs76tcr89rgny0dfpcl256zkw0j4mu00",
+      "scripthash": "a7062d8962a4e9319c4d94c50520bcb1af13bd9bf95efb9fa6b036ee0e83e1c8"
+    },
+    {
+      "address": "bc1qcr25el7jpevd40duq22znc4hg3p5vs0y965ay8",
+      "scripthash": "1e6f2a9b8ae01bfac117f29c7d1980bdbd23c13c0ffd63aef1ced89b425f2242"
+    },
+    {
+      "address": "bc1qstsv22jacyptlgle5rv7ew9ymht8v5a5fqt8ta",
+      "scripthash": "f963ed525fea94b89f03968939dfca7478ffad87456c2cb26bad223e5643cc54"
+    },
+    {
+      "address": "bc1q09rrzkl592wymlkwrcyrq3ar50aps0y7w8mvp2",
+      "scripthash": "cad6e17b99405bcea91b49f6300a153168ccfb061059fad4723b23ac44ea0b7b"
+    },
+    {
+      "address": "bc1qjmn7pjr954txs2q25l8wf2pzh5v89unrd3elyr",
+      "scripthash": "489c099b120a53aa79f144b81d4642c54f8923e19b53f80facf7ac27223474a1"
+    },
+    {
+      "address": "bc1qmkpvl0e5v06p6je8a6x9yyvkxuchackdjxzt4m",
+      "scripthash": "9a97e3510cda8fb63cb132c5e5957e49fd0416e9802ed4790824d1864e727fed"
+    },
+    {
+      "address": "bc1pqqeyhah6g75dwr942xv40h255q4nshqw4k8ylyhe7plej2eg3mnqz9w4np",
+      "scripthash": "9f6f5d6b4720adc3de585eac2261d250d1327f7e5ec97f98b2fab55e567debae"
+    },
+    {
+      "address": "bc1pgaggl4768lnlktgdky4nxm52zyqwpx52wzhkreew9qalxqmerdnqj6nuxn",
+      "scripthash": "f8b0a9798749107d3d0930faaa21e68cde2447d58ff3d3de5fbc23fb5b8aaaa9"
+    },
+    {
+      "address": "bc1pfap3jc9ccm0g5qghk7t76qz7uam3c56ljz9fhkfh6qjmkq8duawq6c909g",
+      "scripthash": "bdb3f320f3b52203623b2395a715bf058f0c055870f2ee27ed711d2ac61217a7"
+    },
+    {
+      "address": "bc1p8t3n6utpa8ckksc54fjvl3nyk0e69jzjcmqfl6kpj9svhwfg438qhj37rp",
+      "scripthash": "8cd9778dae47d2862ece400d9bead8795988dc1e473072f9c7cbe1736bcce4a2"
+    },
+    {
+      "address": "bc1p7tmy7xr3nvrkaurumnyy43eql3226nsq7zm9tckvdvgq7ejwx2xq8tf2ll",
+      "scripthash": "feb2d7786914aa1f15bbbe43df08a1b0a1d5ff4c36acd1d998fee4b45b886d05"
+    },
+    {
+      "address": "bc1pze68k8k30zu29nzzllmhvet26avtxyfec5n88ymwzmd59mxw0wpqlt3mwu",
+      "scripthash": "db5cc862289f64d654d5cc9c06c605d3f8361724731eb0456ea01bdbba2c9e9d"
+    },
+    {
+      "address": "bc1pdnc6g8pzeved83aj5dv74ly4kqdndrucectre3dry453y60f3vzqk3lr95",
+      "scripthash": "cb5bf63c7b0de2f3a7d59129a7522eb25444d0d0ba92e86cef1192dee61c9141"
+    },
+    {
+      "address": "bc1pajccq589lg5ap2478dqynydy6kn5n2j69vss55dz4nlc6fvxwqes83vpyr",
+      "scripthash": "9e48dab6090d6cafc29f891ab82ccced2556ab137bd324684a267ba0a06d65c3"
+    },
+    {
+      "address": "bc1pjt4c29a85e3yhczpyhz36dutdmy6uuy2sv8q07jx5gz4fdwsyfzsmjc2sp",
+      "scripthash": "52829cbd5456e5ded34ca641fcc8cad889d399e92c5d18851b817f31ec465ab6"
+    },
+    {
+      "address": "bc1p5qq2edjqcagynpyfakz5gjwvjl5p8hcuq4c0fufc23r2pxmm9uyske4znc",
+      "scripthash": "2c0a695b9648bc49ed6a888948c58001190f46a4587304e1412abaa16d9fc6fd"
+    }
+  ]
+}

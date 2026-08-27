@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bitwalkit"
+version = "0.1.0"
+description = "Bitcoin Wallet Toolkit: node RPC, watch-only HD address derivation, and address balance/UTXO queries. Zero runtime dependencies."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Elmeri Niemelä" }]
+keywords = ["bitcoin", "rpc", "bip32", "electrum", "wallet", "watch-only"]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/elmeriniemela/bitwalkit"
+
+[tool.setuptools]
+# secp256k1lab is vendored as a git submodule and shipped alongside bitwalkit.
+package-dir = { "" = "src", "secp256k1lab" = "vendor/secp256k1lab/src/secp256k1lab" }
+
+[tool.setuptools.packages.find]
+where = ["src", "vendor/secp256k1lab/src"]
