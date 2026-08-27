@@ -33,17 +33,17 @@ an account-level public key from the signing wallet before using this library.
 
 ## Install
 
-Clone and install from the repository root:
+Install the latest release from PyPI:
+
+```bash
+python -m pip install bitwalkit
+```
+
+For development, clone and install from the repository root:
 
 ```bash
 git clone https://github.com/elmeriniemela/bitwalkit.git
 cd bitwalkit
-python -m pip install -e .
-```
-
-For development tools:
-
-```bash
 python -m pip install -e '.[dev]'
 ```
 
