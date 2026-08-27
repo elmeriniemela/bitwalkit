@@ -25,7 +25,7 @@ class FakeRPC(NodeRPC):
 def test_call_and_attribute_proxy():
     rpc = FakeRPC(lambda req: {"id": req["id"], "result": {"height": 42}, "error": None})
     assert rpc.call("getblock", "hash", 2)["height"] == 42
-    # Attribute access maps to a method call, like tinyrpc's get_proxy().
+    # Attribute access maps directly to a method call.
     assert rpc.getblock("hash", 2)["height"] == 42
     assert rpc.sent[-1]["method"] == "getblock"
     assert rpc.sent[-1]["params"] == ["hash", 2]

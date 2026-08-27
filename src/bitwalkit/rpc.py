@@ -1,10 +1,8 @@
-"""Minimal Bitcoin Core JSON-RPC client over HTTP (replaces ``tinyrpc``).
+"""Minimal, standard-library Bitcoin Core JSON-RPC client over HTTP.
 
-``NodeRPC`` uses only the standard library. Attribute access maps to RPC
-methods, so ``rpc.getblock(hash, 2)`` and ``rpc.getrawtransaction(txid, True)``
-work like ``tinyrpc``'s ``get_proxy()``. Node errors raise :class:`RpcError`,
-whose ``args[0]`` is the node's message (matching the old call sites that
-surfaced ``error.args[0]``).
+Attribute access maps to RPC methods, so ``rpc.getblock(hash, 2)`` and
+``rpc.getrawtransaction(txid, True)`` work like direct node calls. Node errors
+raise :class:`RpcError` and retain the node's numeric error code.
 """
 
 from __future__ import annotations

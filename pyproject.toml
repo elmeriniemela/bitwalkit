@@ -1,17 +1,24 @@
 [build-system]
-requires = ["setuptools>=61"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "bitwalkit"
 version = "0.1.0"
-description = "Bitcoin Wallet Toolkit: node RPC, watch-only HD address derivation, and address balance/UTXO queries. Zero runtime dependencies."
+description = "Standalone watch-only Bitcoin wallet derivation and monitoring toolkit"
 readme = "README.md"
 requires-python = ">=3.12"
-license = { text = "MIT" }
+license = "MIT"
 authors = [{ name = "Elmeri Niemelä" }]
 keywords = ["bitcoin", "rpc", "bip32", "electrum", "wallet", "watch-only"]
 dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "build>=1.3",
+    "pyright>=1.1.400",
+    "pytest>=8",
+]
 
 [project.urls]
 Homepage = "https://github.com/elmeriniemela/bitwalkit"

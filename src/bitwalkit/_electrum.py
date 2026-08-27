@@ -2,8 +2,8 @@
 
 This is a private module -- callers use :class:`bitwalkit.chain.ChainQuery`,
 which speaks in addresses and hides scripthashes and Electrum method names.
-Mirrors the behaviour of the hand-rolled client the Odoo wallet used (relaxed
-SSL verification, 10s timeout, batch requests).
+The client supports TCP or TLS connections, configurable timeouts, and batch
+requests.
 """
 
 from __future__ import annotations

@@ -44,7 +44,8 @@ def server():
     srv.daemon_threads = True
     t = threading.Thread(target=srv.serve_forever, daemon=True)
     t.start()
-    host, port = srv.server_address
+    host = str(srv.server_address[0])
+    port = int(srv.server_address[1])
     try:
         yield ChainQuery(host=host, port=port)
     finally:

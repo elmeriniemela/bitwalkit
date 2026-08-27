@@ -5,6 +5,8 @@ import contextlib
 import json
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from collections.abc import Callable, Generator
+from typing import Any, ClassVar
 
 import pytest
 
@@ -12,26 +14,31 @@ from bitwalkit import NodeRPC, RpcError
 
 
 class Handler(BaseHTTPRequestHandler):
-    response_status = 200
-    response = None
-    request = None
-    authorization = None
+    response_status: ClassVar[int] = 200
+    response: ClassVar[Callable[[dict[str, object]], object]]
+    rpc_request: ClassVar[dict[str, object]] = {}
+    authorization: ClassVar[str | None] = None
 
-    def do_POST(self):
-        type(self).request = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
+    def do_POST(self) -> None:
+        type(self).rpc_request = json.loads(
+            self.rfile.read(int(self.headers["Content-Length"]))
+        )
         type(self).authorization = self.headers.get("Authorization")
-        body = type(self).response(type(self).request)
+        body = type(self).response(type(self).rpc_request)
         self.send_response(type(self).response_status)
         self.send_header("Content-Type", "application/json")
         self.end_headers()
         self.wfile.write(body if isinstance(body, bytes) else json.dumps(body).encode())
 
-    def log_message(self, *args):
+    def log_message(self, format: str, *args: Any) -> None:
         pass
 
 
 @contextlib.contextmanager
-def rpc_server(status, response):
+def rpc_server(
+    status: int,
+    response: Callable[[dict[str, object]], object],
+) -> Generator[NodeRPC, None, None]:
     Handler.response_status = status
     Handler.response = response
     server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
@@ -50,7 +57,7 @@ def test_http_transport_posts_json_and_basic_auth():
         "id": request["id"], "result": 42, "error": None,
     }) as rpc:
         assert rpc.getblockcount() == 42
-    assert Handler.request["method"] == "getblockcount"
+    assert Handler.rpc_request["method"] == "getblockcount"
     token = base64.b64encode(b"alice:secret").decode()
     assert Handler.authorization == f"Basic {token}"
 

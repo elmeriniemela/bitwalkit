@@ -31,9 +31,7 @@ class RpcError(BitwalkitError):
     """A Bitcoin Core JSON-RPC call returned an error.
 
     ``args[0]`` is the node's human-readable error message, and ``code`` is the
-    JSON-RPC error code when present. Call sites that previously caught
-    ``tinyrpc``'s ``JSONRPCError`` and surfaced ``error.args[0]`` keep working
-    unchanged.
+    JSON-RPC error code when present.
     """
 
     def __init__(self, message: str, code: int | None = None) -> None:

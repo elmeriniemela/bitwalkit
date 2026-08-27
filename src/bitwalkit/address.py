@@ -1,11 +1,8 @@
-"""Scripts, addresses, and Electrum scripthashes.
+"""Bitcoin scripts, addresses, and Electrum protocol scripthashes.
 
-Builds a scriptPubKey and its address from a public key (or redeem/witness
-script) for every address type the Odoo wallet uses -- P2PKH, P2SH-P2WPKH
-(BIP49), P2WPKH, P2WSH, P2SH-P2WSH, and P2TR (BIP86) -- and decodes an
-address back to its scriptPubKey. ``address_to_scripthash`` reproduces the
-Electrum protocol scripthash (replacing the only bit of vendored Electrum the
-Odoo code used).
+Build a scriptPubKey and address from a public key or multisig script for
+P2PKH, P2SH-P2WPKH, P2WPKH, P2WSH, P2SH-P2WSH, and P2TR. Addresses can also
+be decoded back to scriptPubKeys for watch-only chain queries.
 """
 
 from __future__ import annotations

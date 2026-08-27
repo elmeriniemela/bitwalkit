@@ -1,6 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+build
 
 # C extensions
 *.so
@@ -48,5 +49,3 @@ AGENTS.md
 CLAUDE.md
 GEMINI.md
 .codex
-.playwright-mcp
-odoorc.conf

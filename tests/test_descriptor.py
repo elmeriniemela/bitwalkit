@@ -1,4 +1,4 @@
-"""Bitcoin Core descriptor checksum vectors frozen from btclib."""
+"""Bitcoin Core output descriptor checksum reference vectors."""
 
 import pytest
 

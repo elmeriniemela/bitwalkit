@@ -12,9 +12,9 @@ ZPUB = ("zpub6rFR7y4Q2AijBEqTUquhVz398htDFrtymD9xYYfG1m4wAcvPhXNfE3EfH1r1ADq"
 # BIP86 account 0 xpub (same mnemonic).
 XPUB86 = ("xpub6BgBgsespWvERF3LHQu6CnqdvfEvtMcQjYrcRzx53QJjSxarj2afYWcLteoGVky"
           "7D3UKDP9QyrLprQ3VCECoY49yfdDEHGCtMMj92pReUsQ")
-# BIP49 account 0 yprv (same mnemonic).
-YPRV = ("yprvAHwhK6RbpuS3dgCYHM5jc2ZvEKd7Bi61u9FVhYMpgMSuZS613T1xxQeKTffhrHY7"
-        "9hZ5PsskBjcc6C2V7DrnsMsNaGDaWev3GLRQRgV7hxF")
+# BIP49 account 0 ypub (same mnemonic).
+YPUB = ("ypub6Ww3ibxVfGzLrAH1PNcjyAWenMTbbAosGNB6VvmSEgytSER9azLDWCxoJwW7Ke7"
+        "icmizBMXrzBx9979FfaHxHcrArf3zbeJJJUZPf663zsP")
 
 
 def test_bip84_receive_addresses():
@@ -36,30 +36,34 @@ def test_bip86_taproot_addresses():
 
 
 def test_bip49_p2sh_wrapped_segwit():
-    acc = bw.Account(YPRV)
+    acc = bw.Account(YPUB)
     assert acc.script_type == "p2sh-p2wpkh"
     assert acc.receive_address(0) == "37VucYSaXLCAsxYyAPfbSi9eh4iEcbShgf"
 
 
-def test_bip32_vector1_fingerprint_and_chain():
-    m = ("xprv9s21ZrQH143K3QTDL4LXw2F7HEK3wJUD2nW2nRk4stbPy6cq3jPPqjiChkVvvNKm"
-         "PGJxWUtg6LnF5kejMRNNU3TGtRBeJgk33yuGBxrMPHi")
-    root = ExtendedKey.parse(m)
-    assert root.fingerprint.hex() == "3442193e"
-    # m/0'/1 public key (BIP32 test vector 1).
-    node = root.derive_path("0'/1")
+def test_bip32_vector1_public_derivation():
+    parent = ExtendedKey.parse(
+        "xpub68Gmy5EdvgibQVfPdqkBBCHxA5htiqg55crXYuXoQRKfDBFA1WEjWgP6LHhw"
+        "BZeNK1VTsfTFUHCdrfp1bgwQ9xv5ski8PX9rL2dZXvgGDnw"
+    )
+    # Public derivation from M/0' to M/0'/1, from BIP32 test vector 1.
+    node = parent.derive_path("1")
     assert node.pubkey.hex() == \
         "03501e454bf00751f24b1b489aa925215d66af2234e3891c3b21a52bedb3cd711c"
+    assert node.serialize() == (
+        "xpub6ASuArnXKPbfEwhqN6e3mwBcDTgzisQN1wXN9BJcM47sSikHjJf3UFHKkNAWbWMi"
+        "Gj7Wf5uMash7SyYq527Hqck2AxYysAA7xmALppuCkwQ"
+    )
+    assert node.fingerprint.hex() == "bef5a2f9"
 
 
-def test_neuter_matches_known_xpub():
-    # BIP32 test vector 1: neutering m/0' (xprv) must reproduce the published xpub.
-    m = ("xprv9s21ZrQH143K3QTDL4LXw2F7HEK3wJUD2nW2nRk4stbPy6cq3jPPqjiChkVvvNKm"
-         "PGJxWUtg6LnF5kejMRNNU3TGtRBeJgk33yuGBxrMPHi")
-    expected = ("xpub68Gmy5EdvgibQVfPdqkBBCHxA5htiqg55crXYuXoQRKfDBFA1WEjWgP6LHhw"
-                "BZeNK1VTsfTFUHCdrfp1bgwQ9xv5ski8PX9rL2dZXvgGDnw")
-    node = ExtendedKey.parse(m).derive_path("0'")
-    assert node.neuter().serialize() == expected
+def test_private_extended_key_is_rejected():
+    private_key = (
+        "xprv9s21ZrQH143K3QTDL4LXw2F7HEK3wJUD2nW2nRk4stbPy6cq3jPPqjiChkVvvNKm"
+        "PGJxWUtg6LnF5kejMRNNU3TGtRBeJgk33yuGBxrMPHi"
+    )
+    with pytest.raises(bw.EncodingError, match="private extended keys"):
+        ExtendedKey.parse(private_key)
 
 
 def test_slip132_key_converts_to_canonical_xpub():
@@ -100,7 +104,7 @@ def test_multisig_is_bip67_sorted_and_stable():
     assert a.receive_address(0).startswith("bc1q")
 
 
-def test_wrapped_multisig_matches_btclib_vector():
+def test_wrapped_multisig_matches_reference_vector():
     xpubs = [
         ("xpub68w2bYfTxScnfFfGvUTGnEEpRyagyBSQfAHtyxi9ncSncYR38QMXeGNEqYFWwaDV"
          "F1ybX7fRK7obyWDxtDoX3f86dCDdVFW6Qoge2ZR6y9J"),

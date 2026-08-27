@@ -1,7 +1,4 @@
-"""NodeRPC against the exact mock fixtures used by the Odoo bitcoin_explorer
-tests (the code that used tinyrpc), so the replacement handles the same
-Bitcoin Core response and error shapes.
-"""
+"""NodeRPC behavior against representative Bitcoin Core response fixtures."""
 
 import json
 
@@ -10,7 +7,7 @@ import pytest
 from bitwalkit.errors import RpcError
 from bitwalkit.rpc import NodeRPC
 
-# A real mainnet transaction hex, as used by the explorer test's _rawtx().
+# A serialized mainnet transaction used as an opaque RPC result fixture.
 _RAWTX_HEX = (
     "02000000013f7cebd65c27431a90bba7f796914fe8cc2ddfc3f2cbd6f7e5f2fc854534da"
     "95000000006b483045022100de1ac3bcdfb0332207c4a91f3832bd2c2915840165f876ab"
@@ -67,7 +64,7 @@ def test_getrawtransaction_verbose_result_passthrough():
     res = rpc.getrawtransaction("tx-search", True)
     assert res == _RAWTX
     assert res["vout"][0]["scriptPubKey"]["hex"].startswith("76a914")
-    # Params are forwarded exactly (txid, verbose=True), like the old proxy.
+    # Params are forwarded exactly (txid, verbose=True).
     assert rpc.sent[-1] == {"jsonrpc": "2.0", "id": 1,
                             "method": "getrawtransaction", "params": ["tx-search", True]}
 
@@ -87,16 +84,15 @@ def test_getblock_verbosity_one_returns_txid_list():
 
 
 @pytest.mark.parametrize("code,message", [
-    (-1, "boom getblock"),          # explorer test's getblock failure
-    (-2, "boom getrawtransaction"),  # explorer test's getrawtransaction failure
-    (-100, "rpc failed"),            # explorer test's protocol-level error reply
-    (-8, "Block not found"),         # a real Bitcoin Core error
+    (-1, "boom getblock"),
+    (-2, "boom getrawtransaction"),
+    (-100, "rpc failed"),
+    (-8, "Block not found"),
 ])
 def test_core_error_surfaces_message_and_code(code, message):
     rpc = FakeRPC(lambda req: {"id": req["id"], "result": None,
                                "error": {"code": code, "message": message}})
     with pytest.raises(RpcError) as ei:
         rpc.getblock("x")
-    # Old call sites did `raise UserError(error.args[0])`; keep args[0] == message.
     assert ei.value.args[0] == message
     assert ei.value.code == code
