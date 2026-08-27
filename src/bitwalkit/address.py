@@ -98,7 +98,11 @@ def _taproot_output_key(internal_pubkey: bytes) -> bytes:
     t = int.from_bytes(tagged_hash("TapTweak", xonly), "big")
     if t >= GE.ORDER:
         raise EncodingError("invalid taproot tweak")
-    q = GE.lift_x(int.from_bytes(xonly, "big")) + (t * G)
+    try:
+        internal_point = GE.lift_x(int.from_bytes(xonly, "big"))
+    except ValueError as exc:
+        raise EncodingError("invalid taproot internal key") from exc
+    q = internal_point + (t * G)
     if q.infinity:
         raise EncodingError("taproot output key is infinity")
     return q.to_bytes_xonly()

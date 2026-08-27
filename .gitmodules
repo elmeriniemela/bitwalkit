@@ -1,3 +1,0 @@
-[submodule "vendor/secp256k1lab"]
-	path = vendor/secp256k1lab
-	url = https://github.com/secp256k1lab/secp256k1lab

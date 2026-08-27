@@ -13,9 +13,11 @@ Its public API covers three tasks:
    server with `ChainQuery`.
 3. Call a Bitcoin Core node over JSON-RPC with `NodeRPC`.
 
-The runtime uses the Python standard library plus a vendored, pure-Python copy
-of [`secp256k1lab`](https://github.com/secp256k1lab/secp256k1lab) for elliptic
-curve point operations. There are no packages to install at runtime.
+The runtime uses only the Python standard library. A small, public-key-only
+secp256k1 implementation validates compressed public keys, derives
+non-hardened BIP32 child public keys, and applies the BIP341/BIP86 Taproot
+output-key tweak. It is not suitable for private-key handling or transaction
+signing. There are no packages to install at runtime.
 
 ## Supported wallets
 
@@ -31,10 +33,10 @@ an account-level public key from the signing wallet before using this library.
 
 ## Install
 
-Clone with submodules, then install from the repository root:
+Clone and install from the repository root:
 
 ```bash
-git clone --recurse-submodules https://github.com/elmeriniemela/bitwalkit.git
+git clone https://github.com/elmeriniemela/bitwalkit.git
 cd bitwalkit
 python -m pip install -e .
 ```

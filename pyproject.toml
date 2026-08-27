@@ -24,8 +24,7 @@ dev = [
 Homepage = "https://github.com/elmeriniemela/bitwalkit"
 
 [tool.setuptools]
-# secp256k1lab is vendored as a git submodule and shipped alongside bitwalkit.
-package-dir = { "" = "src", "secp256k1lab" = "vendor/secp256k1lab/src/secp256k1lab" }
+package-dir = { "" = "src" }
 
 [tool.setuptools.packages.find]
-where = ["src", "vendor/secp256k1lab/src"]
+where = ["src"]

@@ -1,8 +1,4 @@
-"""Make the source tree importable during tests without an install step.
-
-``bitwalkit._secp`` already adds the vendored ``secp256k1lab`` to ``sys.path``,
-so only ``src`` needs to go on the path here.
-"""
+"""Make the source tree importable during tests without an install step."""
 
 import os
 import sys
