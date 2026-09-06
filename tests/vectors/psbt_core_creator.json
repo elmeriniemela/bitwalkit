@@ -1,0 +1,28 @@
+{
+  "source": "https://github.com/bitcoin/bitcoin/blob/master/test/functional/data/rpc_psbt.json",
+  "source_sha256": "1779e2a9a07476d72411d38a48986585e600915d8a3148b9becf8a985f781b87",
+  "license": "Bitcoin Core MIT license; https://github.com/bitcoin/bitcoin/blob/master/COPYING",
+  "creator": [
+    {
+      "inputs": [
+        {
+          "txid": "75ddabb27b8845f5247975c8a5ba7c6f336c4570708ebe230caf6db5217ae858",
+          "vout": 0
+        },
+        {
+          "txid": "1dea7cd05979072a3578cab271c02244ea8a090bbb46aa680a65ecd027048d83",
+          "vout": 1
+        }
+      ],
+      "outputs": [
+        {
+          "bcrt1qmpwzkuwsqc9snjvgdt4czhjsnywa5yjdqpxskv": 1.4999
+        },
+        {
+          "bcrt1qqzh2ngh97ru8dfvgma25d6r595wcwqy0cee4cc": 1
+        }
+      ],
+      "result": "cHNidP8BAJoCAAAAAljoeiG1ba8MI76OcHBFbDNvfLqlyHV5JPVFiHuyq911AAAAAAD/////g40EJ9DsZQpoqka7CwmK6kQiwHGyyng1Kgd5WdB86h0BAAAAAP////8CcKrwCAAAAAAWABTYXCtx0AYLCcmIauuBXlCZHdoSTQDh9QUAAAAAFgAUAK6pouXw+HaliN9VRuh0LR2HAI8AAAAAAAAAAAA="
+    }
+  ]
+}
