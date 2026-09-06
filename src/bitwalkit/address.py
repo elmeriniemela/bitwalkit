@@ -26,6 +26,7 @@ __all__ = [
     "p2tr_script",
     "p2ms_script",
     "p2pk_script",
+    "op_return_script",
 ]
 
 # Base58 version bytes and bech32 HRP per network.
@@ -43,20 +44,38 @@ OP_EQUAL = 0x87
 OP_EQUALVERIFY = 0x88
 OP_CHECKSIG = 0xAC
 OP_CHECKMULTISIG = 0xAE
+OP_RETURN = 0x6A
 OP_0 = 0x00
 OP_1 = 0x51  # OP_1..OP_16 are 0x51..0x60
 
 
 def _pushdata(data: bytes) -> bytes:
-    """Minimal push of ``data`` (adequate for keys/hashes, all < 76 bytes)."""
-    if len(data) < 0x4C:
-        return bytes([len(data)]) + data
-    raise EncodingError("pushdata too large for this helper")
+    """Push a byte vector using the shortest available length prefix."""
+    size = len(data)
+    if size < 0x4C:
+        return bytes([size]) + data
+    for maximum, opcode, width in ((0xFF, 0x4C, 1), (0xFFFF, 0x4D, 2),
+                                   (0xFFFFFFFF, 0x4E, 4)):
+        if size <= maximum:
+            return bytes([opcode]) + size.to_bytes(width, "little") + data
+    raise EncodingError("pushdata length exceeds uint32")
 
 
 # --------------------------------------------------------------------------- #
 # Raw scriptPubKey / script builders
 # --------------------------------------------------------------------------- #
+
+def op_return_script(data: bytes) -> bytes:
+    """Build OP_RETURN followed by one byte-vector push, including empty data.
+
+    Use with ``PSBTOutput(0, op_return_script(data))`` and no signing metadata.
+    Text and hexadecimal strings must be explicitly encoded/decoded to bytes.
+    No relay-policy size limit is enforced; acceptance depends on node policy.
+    """
+    if not isinstance(data, bytes):
+        raise EncodingError("OP_RETURN data must be bytes")
+    return bytes([OP_RETURN]) + _pushdata(data)
+
 
 def p2pkh_script(pubkey: bytes) -> bytes:
     h = hash160(pubkey)
@@ -169,6 +188,8 @@ def address_to_script(address: str, network: str | None = None) -> bytes:
         return bytes([op, len(program)]) + program
 
     payload = base58check_decode(address)
+    if len(payload) != 21:
+        raise EncodingError("Base58 address must contain a version byte and a 20-byte hash")
     version, h = payload[0], payload[1:]
     for net, params in NETWORKS.items():
         if network is not None and net != network:

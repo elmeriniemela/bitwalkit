@@ -34,6 +34,12 @@ def test_base58check_roundtrip():
         assert base58check_decode(base58check_encode(payload)) == payload
 
 
+@pytest.mark.parametrize('payload', [b'', b'\x00', b'\x00' + b'\x11' * 19, b'\x05' + b'\x11' * 21])
+def test_reject_base58_address_with_wrong_payload_length(payload):
+    with pytest.raises(EncodingError, match='20-byte hash'):
+        bw.address_to_script(base58check_encode(payload))
+
+
 def test_bech32_roundtrip_v0_and_v1():
     for witver, prog in ((0, b"\x11" * 20), (0, b"\x22" * 32), (1, b"\x33" * 32)):
         enc = bech32_encode("bc", witver, prog)
