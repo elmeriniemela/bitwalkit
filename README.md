@@ -14,6 +14,7 @@ Its public API covers four tasks:
 3. Call a Bitcoin Core node over JSON-RPC with `NodeRPC`.
 4. Construct native SegWit PSBTs offline from manually declared inputs with
    `derive_native_segwit` and `create_psbt`.
+5. Parse legacy and SegWit transaction HEX locally with `parse_transaction`.
 
 The runtime uses only the Python standard library. A small, public-key-only
 secp256k1 implementation validates compressed public keys, derives
@@ -83,7 +84,32 @@ height = node.getblockcount()
 ```
 
 Network access is performed only when calling `ChainQuery` or `NodeRPC`.
+
+`NodeRPC` supports concurrent calls and batches while its configuration remains
+unchanged. Single-call request IDs are allocated under a short lock, while batch
+IDs remain local to their HTTP request. Network I/O is not serialized, so a
+long-polling request does not block other calls on the client.
 Address derivation and encoding are fully local.
+
+### Transaction HEX parsing
+
+`parse_transaction` decodes a complete raw transaction into immutable typed
+inputs and outputs. It also calculates the transaction's `txid`, `wtxid`, byte
+size, weight, and virtual size. The original string is retained as `tx.hex` for
+direct use with RPC methods.
+
+```python
+tx = bw.parse_transaction(raw_transaction_hex)
+print(tx.txid, tx.version, tx.locktime)
+node.sendrawtransaction(tx.hex)
+for output in tx.outputs:
+    print(output.amount, output.script_pubkey.hex())
+```
+
+Legacy and SegWit serialization are supported. Scripts and witness elements
+remain raw bytes, so parsing does not require or assume a network. This checks
+the serialized encoding; it does not validate scripts, signatures, amounts,
+UTXO existence, or consensus and relay rules.
 
 ### Offline PSBT generation
 
@@ -199,7 +225,9 @@ python -m pyright
 The suite covers malformed input handling, BIP32 public derivation, address
 encoding, BIP44/49/84/86 derivation, BIP341 taproot vectors, multisig,
 Electrum protocol behavior, Bitcoin Core JSON-RPC response handling, and PSBT
-serialization and metadata. If `bitcoind` and `bitcoin-cli` are on `PATH`, PSBT
+serialization and metadata. Transaction parsing is checked against public
+BIP143/BIP341 and Bitcoin Core vectors, including the genesis coinbase and
+CompactSize boundary data. If `bitcoind` and `bitcoin-cli` are on `PATH`, PSBT
 tests also decode generated files with an isolated regtest node; no existing
 node configuration or wallet is used. Otherwise those interoperability tests
 are skipped, while the frozen reference and serialization tests still run.

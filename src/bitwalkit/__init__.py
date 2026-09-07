@@ -9,6 +9,7 @@ Dependency-free capabilities:
   by an Electrum server, but the caller only ever deals in addresses).
 * :func:`create_psbt` -- build an unsigned native SegWit PSBT from manually
   declared outpoints and amounts, without querying chain state.
+* :func:`parse_transaction` -- decode legacy or SegWit transaction HEX.
 """
 
 from __future__ import annotations
@@ -41,6 +42,7 @@ from .errors import (
 from .hd import Account, MultisigAccount
 from .rpc import NodeRPC
 from .psbt import InputSequence, KeyOrigin, PSBTInput, PSBTOutput, SegwitSpend, create_psbt, derive_native_segwit, dust_threshold
+from .transaction import Transaction, TransactionInput, TransactionOutput, parse_transaction
 
 __version__ = "0.2.0"
 
@@ -54,6 +56,10 @@ __all__ = [
     "create_psbt",
     "derive_native_segwit",
     "dust_threshold",
+    "Transaction",
+    "TransactionInput",
+    "TransactionOutput",
+    "parse_transaction",
     # rpc
     "NodeRPC",
     # derivation
