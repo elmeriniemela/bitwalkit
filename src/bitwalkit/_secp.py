@@ -75,14 +75,60 @@ class GE:
             return NotImplemented
 
         scalar %= self.ORDER
-        result = GE()
-        addend = self
+        if not scalar or self.infinity:
+            return GE()
+        assert self.x is not None and self.y is not None
+
+        def add(left, right):
+            if left is None:
+                return right
+            if right is None:
+                return left
+            x1, y1, z1 = left
+            x2, y2, z2 = right
+            z1_squared = z1 * z1 % _FIELD
+            z2_squared = z2 * z2 % _FIELD
+            u1 = x1 * z2_squared % _FIELD
+            u2 = x2 * z1_squared % _FIELD
+            s1 = y1 * z2 * z2_squared % _FIELD
+            s2 = y2 * z1 * z1_squared % _FIELD
+            if u1 == u2:
+                if s1 != s2:
+                    return None
+                return double(left)
+            h = (u2 - u1) % _FIELD
+            r = (s2 - s1) % _FIELD
+            h_squared = h * h % _FIELD
+            h_cubed = h * h_squared % _FIELD
+            u1_h_squared = u1 * h_squared % _FIELD
+            x3 = (r * r - h_cubed - 2 * u1_h_squared) % _FIELD
+            y3 = (r * (u1_h_squared - x3) - s1 * h_cubed) % _FIELD
+            return x3, y3, h * z1 * z2 % _FIELD
+
+        def double(point):
+            x, y, z = point
+            if not y:
+                return None
+            y_squared = y * y % _FIELD
+            s = 4 * x * y_squared % _FIELD
+            m = 3 * x * x % _FIELD
+            x3 = (m * m - 2 * s) % _FIELD
+            y3 = (m * (s - x3) - 8 * y_squared * y_squared) % _FIELD
+            return x3, y3, 2 * y * z % _FIELD
+
+        result = None
+        addend = self.x, self.y, 1
         while scalar:
             if scalar & 1:
-                result = result + addend
-            addend = addend + addend
+                result = add(result, addend)
+            addend = double(addend)
             scalar >>= 1
-        return result
+        if result is None:
+            return GE()
+        x, y, z = result
+        inverse = pow(z, -1, _FIELD)
+        inverse_squared = inverse * inverse % _FIELD
+        return GE(x * inverse_squared % _FIELD, y * inverse_squared * inverse % _FIELD)
 
     @classmethod
     def lift_x(cls, x: int) -> GE:
