@@ -44,7 +44,7 @@ from .rpc import NodeRPC
 from .psbt import InputSequence, KeyOrigin, PSBTInput, PSBTOutput, SegwitSpend, create_psbt, derive_native_segwit, dust_threshold
 from .transaction import Transaction, TransactionInput, TransactionOutput, parse_transaction
 
-__version__ = "0.3.0"
+__version__ = "0.3.1"
 
 __all__ = [
     "__version__",
