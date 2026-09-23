@@ -137,6 +137,34 @@ class ExtendedKey:
             script_type_hint="p2pkh",
         ).serialize()
 
+    def to_zpub(self) -> str:
+        """Serialize this key with the canonical zpub/vpub public version."""
+        version = 0x04B24746 if self.network == "mainnet" else 0x045F1CF6
+        return ExtendedKey(
+            version=version,
+            depth=self.depth,
+            parent_fingerprint=self.parent_fingerprint,
+            child_number=self.child_number,
+            chain_code=self.chain_code,
+            key=self.key,
+            network=self.network,
+            script_type_hint="p2wpkh",
+        ).serialize()
+
+    def to_Zpub(self) -> str:
+        """Serialize this key with the BIP48 multisig Zpub/Vpub public version."""
+        version = 0x02AA7ED3 if self.network == "mainnet" else 0x02575483
+        return ExtendedKey(
+            version=version,
+            depth=self.depth,
+            parent_fingerprint=self.parent_fingerprint,
+            child_number=self.child_number,
+            chain_code=self.chain_code,
+            key=self.key,
+            network=self.network,
+            script_type_hint="p2wsh",
+        ).serialize()
+
     def child(self, index: int) -> "ExtendedKey":
         """Derive a non-hardened child public key at ``index``."""
         if not isinstance(index, int) or not 0 <= index <= 0xFFFFFFFF:
